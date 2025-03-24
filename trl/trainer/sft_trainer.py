@@ -328,13 +328,13 @@ class SFTTrainer(Trainer):
             elif self.args.max_steps == -1 and args.packing:
                 self.train_dataset.infinite = False
 
-        warnings.warn("[DEBUG] Inside init sft trainer.")
-        warnings.warn("[DEBUG] train dataset post preperation.")
+        warnings.warn("[DEBUG] Inside init sft trainer.", UserWarning)
+        warnings.warn("[DEBUG] train dataset post preperation.", UserWarning)
         for d in self.train_dataset:
-            warnings.warn(str(d))
-        warnings.warn("[DEBUG] prepared dataset print done")
-        warnings.warn(f"[DEBUG] data collator {str(data_collator)}")
-        warnings.warn("[DEBUG] Exiting init sft trainer.")
+            warnings.warn(str(d), UserWarning)
+        warnings.warn("[DEBUG] prepared dataset print done", UserWarning)
+        warnings.warn(f"[DEBUG] data collator {str(data_collator)}", UserWarning)
+        warnings.warn("[DEBUG] Exiting init sft trainer.",UserWarning)
 
     def _prepare_dataset(
         self,

@@ -53,6 +53,9 @@ from transformers.utils import (
 
 from ..trainer.model_config import ModelConfig
 
+torch.set_printoptions(threshold=float('inf'))
+
+warnings.filterwarnings("always", category=UserWarning)
 
 if is_comet_available():
     import comet_ml
@@ -124,7 +127,7 @@ class DataCollatorForCompletionOnlyLM(DataCollatorForLanguageModeling):
 
         warnings.warn("[DEBUG] Inside DataCollatorForCompletionOnlyLM torch call")
         warnings.warn("[DEBUG] Argument: examples - ")
-        warnings.warn(str(examples))
+        warnings.warn(str(examples), UserWarning)
         warnings.warn("[DEBUG] examples done")
 
         batch = super().torch_call(examples)

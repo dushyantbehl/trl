@@ -121,6 +121,12 @@ class DataCollatorForCompletionOnlyLM(DataCollatorForLanguageModeling):
         self.padding_free = padding_free
 
     def torch_call(self, examples: list[Union[list[int], Any, dict[str, Any]]]) -> dict[str, Any]:
+
+        warnings.warn("[DEBUG] Inside DataCollatorForCompletionOnlyLM torch call")
+        warnings.warn("[DEBUG] Argument: examples - ")
+        warnings.warn(str(examples))
+        warnings.warn("[DEBUG] examples done")
+
         batch = super().torch_call(examples)
 
         if self.instruction_template is None:
@@ -229,6 +235,11 @@ class DataCollatorForCompletionOnlyLM(DataCollatorForLanguageModeling):
             # Determine maximum sequence lengths to prevent graph breaks during further computations.
             batch["max_length_k"] = flattened_position_ids.max().item() + 1
             batch["max_length_q"] = batch["max_length_k"]
+
+
+        warnings.warn("[DEBUG] Returning: batch - ")
+        warnings.warn(str(batch))
+        warnings.warn("[DEBUG] batch done")
 
         return batch
 
